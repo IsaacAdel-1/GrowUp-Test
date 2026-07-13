@@ -1,0 +1,112 @@
+.scale {
+  display: flex;
+  flex-direction: row-reverse; /* القيمة 4 تظهر على اليسار و 1 على اليمين */
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(10px, 3vw, 30px);
+  padding: 4px 0 2px;
+}
+
+/* تعيين لون كل خيار حسب الـ tone */
+.option[data-tone='blue'] {
+  --tone: var(--c-blue);
+}
+.option[data-tone='teal'] {
+  --tone: var(--c-teal);
+}
+.option[data-tone='orange'] {
+  --tone: var(--c-orange);
+}
+.option[data-tone='red'] {
+  --tone: var(--c-red);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  user-select: none;
+  width: 92px;
+  text-align: center;
+}
+
+/* إخفاء زر الراديو الأصلي مع إبقائه متاحاً للوحة المفاتيح */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2.5px solid var(--tone);
+  color: var(--tone);
+  background: var(--c-card);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform var(--t), background var(--t), color var(--t),
+    box-shadow var(--t);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tone);
+  line-height: 1.3;
+  transition: opacity var(--t);
+}
+
+/* Hover */
+.option:hover .circle {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--tone) 10%, #fff);
+}
+
+/* الحالة المختارة */
+.option[data-selected='true'] .circle {
+  background: var(--tone);
+  color: #fff;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--tone) 45%, transparent);
+  transform: translateY(-2px);
+}
+
+/* التركيز عبر لوحة المفاتيح */
+.input:focus-visible + .circle {
+  outline: 3px solid color-mix(in srgb, var(--tone) 45%, transparent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .scale {
+    gap: clamp(6px, 3.5vw, 18px);
+  }
+  .option {
+    width: 64px;
+    gap: 7px;
+  }
+  .circle {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+  .label {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .circle {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}

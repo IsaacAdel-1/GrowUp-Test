@@ -1,0 +1,87 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', Tahoma,
+    'Helvetica Neue', Arial, sans-serif;
+  color: var(--c-text);
+  background: radial-gradient(
+      1200px 600px at 50% -10%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(180deg, var(--c-bg-1) 0%, var(--c-bg-2) 42%, var(--c-bg-2) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* حركة ظهور بسيطة تُستخدم عند تبديل الأقسام */
+@keyframes gu-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* حركة طفو خفيفة لشخصيات المستويات */
+@keyframes gu-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ===== الطباعة / تصدير PDF ===== */
+@page {
+  margin: 12mm;
+}
+
+@media print {
+  [data-noprint='true'] {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #ffffff !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

@@ -1,0 +1,69 @@
+.page {
+  min-height: 100vh;
+  padding: clamp(12px, 2vw, 22px) 16px 56px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  scroll-margin-top: 16px;
+}
+
+/* شاشة "لم تُكمل الاختبار" */
+.notReady {
+  text-align: center;
+  background: var(--c-card);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: clamp(32px, 6vw, 60px) 24px;
+  box-shadow: var(--shadow-md);
+  margin-top: 20px;
+}
+.notReady h2 {
+  margin: 0 0 10px;
+  font-size: clamp(20px, 3.5vw, 26px);
+  font-weight: 800;
+  color: var(--c-navy);
+}
+.notReady p {
+  margin: 0 0 22px;
+  font-size: 16px;
+  color: var(--c-muted);
+}
+.notReady button {
+  padding: 13px 28px;
+  border-radius: var(--r-pill);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(145deg, var(--c-blue) 0%, var(--c-blue-deep) 100%);
+  box-shadow: var(--shadow-blue);
+}
+
+/* البطاقة الكبيرة اللي تجمع شريط التقدّم + القسم + التنقّل */
+.card {
+  background: color-mix(in srgb, var(--c-card) 55%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: clamp(18px, 3vw, 28px);
+  box-shadow: var(--shadow-lg);
+}
+
+.body {
+  margin-top: 22px;
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 0 12px 36px;
+  }
+  .card {
+    border-radius: var(--r-lg);
+    padding: 16px;
+  }
+  .body {
+    margin-top: 16px;
+  }
+}

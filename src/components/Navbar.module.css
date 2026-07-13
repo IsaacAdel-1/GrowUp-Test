@@ -1,0 +1,103 @@
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, #ffffff 78%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid var(--c-border);
+}
+
+.inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(145deg, var(--c-blue) 0%, var(--c-blue-deep) 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-blue);
+}
+
+.brandText {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--c-navy);
+  white-space: nowrap;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-inline-start: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex: 0 0 auto;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-muted);
+  padding: 8px 15px;
+  border-radius: var(--r-pill);
+  transition: color var(--t), background var(--t);
+  white-space: nowrap;
+}
+.tab:hover {
+  color: var(--c-blue-deep);
+  background: color-mix(in srgb, var(--c-blue) 8%, transparent);
+}
+
+.tab[data-active='true'] {
+  color: #fff;
+  background: linear-gradient(145deg, var(--c-blue) 0%, var(--c-blue-deep) 100%);
+  box-shadow: var(--shadow-blue);
+}
+
+.tab[data-locked='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.tab[data-locked='true']:hover {
+  color: var(--c-muted);
+  background: none;
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 9px 12px;
+    gap: 10px;
+  }
+  .brandText {
+    display: none; /* على الموبايل نكتفي بالشعار لتوفير المساحة */
+  }
+  .tabs {
+    margin-inline-start: 0;
+    width: 100%;
+  }
+  .tab {
+    font-size: 14px;
+    padding: 7px 13px;
+  }
+}

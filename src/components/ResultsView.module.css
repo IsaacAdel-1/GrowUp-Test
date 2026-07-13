@@ -1,0 +1,296 @@
+.wrap {
+  animation: gu-fade-up 0.45s var(--t) both;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ألوان حسب المستوى */
+[data-tone='blue'] {
+  --tone: var(--c-blue);
+}
+[data-tone='teal'] {
+  --tone: var(--c-teal);
+}
+[data-tone='orange'] {
+  --tone: var(--c-orange);
+}
+[data-tone='red'] {
+  --tone: var(--c-red);
+}
+
+/* ===== الترويسة ===== */
+.header {
+  text-align: center;
+  padding: clamp(8px, 2vw, 18px) 0 0;
+}
+.title {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 900;
+  color: var(--c-navy);
+}
+.sub {
+  margin: 0 auto;
+  max-width: 620px;
+  font-size: clamp(14px, 2.1vw, 16px);
+  color: var(--c-muted);
+  line-height: 1.8;
+}
+.overallChip {
+  display: inline-block;
+  margin-inline-start: 8px;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 12%, #fff);
+  border: 1.5px solid color-mix(in srgb, var(--tone) 25%, #fff);
+  padding: 5px 14px;
+  border-radius: var(--r-pill);
+  vertical-align: middle;
+}
+
+/* ===== المقارنة ===== */
+.section {
+  background: color-mix(in srgb, var(--c-card) 55%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: clamp(18px, 3vw, 28px);
+  box-shadow: var(--shadow-sm);
+}
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: clamp(19px, 3vw, 24px);
+  font-weight: 800;
+  color: var(--c-navy);
+  text-align: center;
+}
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* ===== بطاقات المبادئ (التركيز) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--c-card);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-xs);
+  border-inline-start: 5px solid var(--tone);
+  transition: box-shadow var(--t), transform var(--t);
+}
+.card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.cardIcon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--tone) 12%, #fff);
+  color: var(--tone);
+  display: grid;
+  place-items: center;
+}
+.cardTitles {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.cardTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--c-navy);
+}
+.cardLevel {
+  font-size: 13px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--tone) 74%, #1a2230);
+}
+.cardScore {
+  flex: 0 0 auto;
+  text-align: center;
+  line-height: 1.1;
+}
+.cardPercent {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--c-navy);
+}
+.cardRaw {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-muted);
+}
+.bar {
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: var(--c-track);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--tone);
+  transform-origin: right center;
+  transition: transform 0.7s var(--t);
+}
+.cardTagline {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--c-text);
+  line-height: 1.6;
+}
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-blue-deep);
+}
+.cardLink:hover {
+  gap: 10px;
+}
+
+/* ===== الأقوى والأضعف ===== */
+.callouts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.callout {
+  border-radius: var(--r-lg);
+  padding: 22px;
+  border: 1.5px solid var(--c-border);
+}
+.callout[data-kind='weak'] {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c-orange) 9%, #fff) 0%, var(--c-card) 100%);
+  border-color: color-mix(in srgb, var(--c-orange) 30%, var(--c-border));
+}
+.callout[data-kind='strong'] {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c-blue) 9%, #fff) 0%, var(--c-card) 100%);
+  border-color: color-mix(in srgb, var(--c-blue) 30%, var(--c-border));
+}
+.calloutTag {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  margin-bottom: 10px;
+}
+.callout[data-kind='weak'] .calloutTag {
+  background: color-mix(in srgb, var(--c-orange) 16%, #fff);
+  color: var(--c-orange);
+}
+.callout[data-kind='strong'] .calloutTag {
+  background: color-mix(in srgb, var(--c-blue) 16%, #fff);
+  color: var(--c-blue-deep);
+}
+.calloutTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--c-navy);
+  line-height: 1.4;
+}
+.calloutText {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  color: var(--c-text);
+  line-height: 1.7;
+}
+.calloutBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--c-blue-deep);
+  padding: 8px 4px;
+}
+.calloutBtn:hover {
+  gap: 10px;
+}
+
+/* ===== الأزرار ===== */
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.ctaPrimary,
+.ctaSecondary {
+  flex: 1 1 240px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border-radius: var(--r-pill);
+  font-size: 16px;
+  font-weight: 800;
+  transition: transform var(--t), box-shadow var(--t);
+}
+.ctaPrimary {
+  background: linear-gradient(145deg, var(--c-blue) 0%, var(--c-blue-deep) 100%);
+  color: #fff;
+  box-shadow: var(--shadow-blue);
+}
+.ctaSecondary {
+  background: var(--c-card);
+  color: var(--c-text);
+  border: 1.5px solid var(--c-border);
+  box-shadow: var(--shadow-xs);
+}
+.ctaPrimary:hover,
+.ctaSecondary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.restart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 13px 28px;
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-muted);
+  background: transparent;
+}
+.restart:hover {
+  color: var(--c-text);
+}
+
+@media (max-width: 620px) {
+  .charts,
+  .callouts,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
