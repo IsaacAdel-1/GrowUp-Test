@@ -15,7 +15,7 @@ import StagesView from './components/StagesView.jsx'
 import GuideView from './components/GuideView.jsx'
 import ReportView from './components/ReportView.jsx'
 import styles from './App.module.css'
-
+import { Analytics } from "@vercel/analytics/react";
 const STORAGE_KEY = 'growup-maturity-answers'
 
 function loadAnswers() {
@@ -190,6 +190,7 @@ export default function App() {
       <main className={styles.page}>
         <div className={styles.container}>{renderView()}</div>
       </main>
+      <Analytics/>
     </>
   )
 }
